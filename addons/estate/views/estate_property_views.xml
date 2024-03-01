@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<!-- vue détail d'une estate -->
+	<record id="view_estate_property_form" model="ir.ui.view">
+		<field name="name">estate.property.form</field>
+		<field name="model">estate.property</field>
+		<field name="arch" type="xml">
+			<form string="Estate Property">
+				<!-- les champs que vous souhaitez afficher dans le formulaire -->
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="description" />
+						<field name="postcode" />
+						<field name="date_availability" />
+						<field name="expected_price" />
+						<field name="selling_price" />
+						<field name="bedrooms" />
+						<field name="living_area" />
+						<field name="facades" />
+						<field name="garage" />
+						<field name="garden" />
+						<field name="garden_area" />
+						<field name="garden_orientation" />
+						<field name="last_seen" readonly="1" />
+						<field name="active" />
+						<field name="state" />
+						<field name="property_type_id" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<!-- vue menu action de créer des maisons -->
+	<record id="test_model_action" model="ir.actions.act_window">
+		<field name="name">My new house</field>
+		<field name="res_model">estate.property</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'search_default_max_results': 50}</field>
+	</record>
+	<!-- vue tree -->
+	<record id="view_estate_property_tree" model="ir.ui.view">
+		<field name="name">Test liste</field>
+		<field name="model">estate.property</field>
+		<field name="arch" type="xml">
+			<tree string="Tests">
+				<field name="name" />
+				<field name="last_seen" />
+				<field name="state" />
+				<field name="property_type_id" />
+			</tree>
+		</field>
+	</record>
+	<!-- Vue de recherche personnalisée pour estate.property -->
+	<record id="view_estate_property_search" model="ir.ui.view">
+		<field name="name">estate.property.search</field>
+		<field name="model">estate.property</field>
+		<field name="arch" type="xml">
+			<search string="Search Estate Properties">
+				<field name="name" string="Name" />
+				<field name="postcode" string="Postcode" />
+				<field name="bedrooms" string="Bedrooms" />
+				<field name="date_availability" string="Date Availability" />
+				<field name="state" string="State" />
+				<field name="property_type_id" />
+				<filter string="Available Properties" name="available" domain="[('state', 'in', ('new', 'offer_received'))]" />
+				<filter name="postcode" context="{'group_by' : 'postcode'}" string="Postcode" />
+				<filter name="bedrooms" context="{'group_by' : 'bedrooms'}" string="bedrooms" />
+				<filter name="garden" context="{'group_by' : 'garden'}" string="garden" />
+			</search>
+		</field>
+	</record>
+</odoo>

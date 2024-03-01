@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+			<!-- Actions de vue -->
+			<record id="action_menu_house" model="ir.actions.act_window">
+				<field name="name">Houses</field>
+				<field name="res_model">estate.house</field> 
+				<field name="view_mode">tree,form</field> 
+			</record>
+
+			<!-- Actions de vue -->
+			<record id="action_menu_apartment" model="ir.actions.act_window">
+				<field name="name">apartments</field>
+				<field name="res_model">estate.apartment</field> 
+				<field name="view_mode">tree,form</field> 
+			</record>
+
+			<!-- Actions de vue -->
+			<record id="action_menu_castle" model="ir.actions.act_window">
+				<field name="name">Castles</field>
+				<field name="res_model">estate.castle</field> 
+				<field name="view_mode">tree,form</field> 
+			</record>
+
+
+		<menuitem id="test_menu_root" name="Menu Estates">
+			<menuitem id="test_first_level_menu" name="First Level"/>
+			<menuitem id="menu_estate_property_types" name="Real Estate Property Types">
+				<menuitem id="menu_house" name="House" action="action_menu_house"/>
+				<menuitem id="menu_apartment" name="Apartment" action="action_menu_apartment"/>
+				<menuitem id="menu_castle" name="Castle" action="action_menu_castle"/>
+			</menuitem>
+		</menuitem>
+	</data>	
+</odoo>
