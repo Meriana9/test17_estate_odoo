@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="view_estate_property_form_inherit" model="ir.ui.view">
+        <field name="name">estate.property.form.inherit</field>
+        <field name="model">estate.property</field>
+        <field name="inherit_id" ref="estate.view_estate_property_form"/>
+        <field name="arch" type="xml">
+                <page string="Additional Information">
+                    <group>
+                        <field name="buyer_id"/>
+                        <field name="salesperson_id"/>
+                    </group>
+                </page>
+        </field>
+    </record>
+
+</odoo>
