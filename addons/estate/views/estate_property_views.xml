@@ -27,6 +27,7 @@
 						<field name="state" />
 						<field name="property_type_id" />
 						<field name="property_tag_ids" />
+						<field name="property_offer_ids" />
 					</group>
 				</sheet>
 				<sheet>
@@ -63,6 +64,7 @@
 				<field name="state" />
 				<field name="property_type_id" />
 				<field name="property_tag_ids" />
+				<field name="property_offer_ids" />
 			</tree>
 		</field>
 	</record>
@@ -80,6 +82,7 @@
 				<field name="state" string="State" />
 				<field name="property_type_id" />
 				<field name="property_tag_ids" />
+				<field name="property_offer_ids" />
 				<filter string="Available Properties" name="available" domain="[('state', 'in', ('new', 'offer_received'))]" />
 				<filter name="postcode" context="{'group_by' : 'postcode'}" string="Postcode" />
 				<filter name="bedrooms" context="{'group_by' : 'bedrooms'}" string="bedrooms" />
