@@ -6,7 +6,6 @@ class EstatePropertyType(models.Model):
 
 
     name = fields.Char(string='Name', required= True)
-""" type = fields.Char(string='Char')
-attributes = fields.Char( required=True) """
+   
     
     

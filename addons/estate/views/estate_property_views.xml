@@ -26,11 +26,24 @@
 						<field name="active" />
 						<field name="state" />
 						<field name="property_type_id" />
+						<field name="property_tag_ids" />
 					</group>
 				</sheet>
+				<sheet>
+					<notebook>
+						<page string="Additional Information">
+							<group>
+								<field name="buyer_id"/>
+								<field name="salesperson_id"/>
+							</group>
+						</page>
+					</notebook>
+				</sheet>
+			
 			</form>
 		</field>
 	</record>
+
 	<!-- vue menu action de créer des maisons -->
 	<record id="test_model_action" model="ir.actions.act_window">
 		<field name="name">My new house</field>
@@ -38,6 +51,7 @@
 		<field name="view_mode">tree,form</field>
 		<field name="context">{'search_default_max_results': 50}</field>
 	</record>
+
 	<!-- vue tree -->
 	<record id="view_estate_property_tree" model="ir.ui.view">
 		<field name="name">Test liste</field>
@@ -48,9 +62,11 @@
 				<field name="last_seen" />
 				<field name="state" />
 				<field name="property_type_id" />
+				<field name="property_tag_ids" />
 			</tree>
 		</field>
 	</record>
+
 	<!-- Vue de recherche personnalisée pour estate.property -->
 	<record id="view_estate_property_search" model="ir.ui.view">
 		<field name="name">estate.property.search</field>
@@ -63,6 +79,7 @@
 				<field name="date_availability" string="Date Availability" />
 				<field name="state" string="State" />
 				<field name="property_type_id" />
+				<field name="property_tag_ids" />
 				<filter string="Available Properties" name="available" domain="[('state', 'in', ('new', 'offer_received'))]" />
 				<filter name="postcode" context="{'group_by' : 'postcode'}" string="Postcode" />
 				<filter name="bedrooms" context="{'group_by' : 'bedrooms'}" string="bedrooms" />

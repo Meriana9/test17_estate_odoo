@@ -24,13 +24,14 @@
 			</record>
 
 
-		<menuitem id="test_menu_root" name="Menu Estates">
-			<menuitem id="test_first_level_menu" name="First Level"/>
-			<menuitem id="menu_estate_property_types" name="Real Estate Property Types">
-				<menuitem id="menu_house" name="House" action="action_menu_house"/>
-				<menuitem id="menu_apartment" name="Apartment" action="action_menu_apartment"/>
-				<menuitem id="menu_castle" name="Castle" action="action_menu_castle"/>
+		<menuitem id="menu_settings" name="Settings" sequence="20">
+			<menuitem id="menu_estate_property_tags" name="Property Tags" sequence="10"/>
+			<menuitem id="menu_estate_property_types" name="Property Types" sequence="20">
+				<menuitem id="menu_house" name="House" sequence="10" action="action_menu_house"/>
+				<menuitem id="menu_apartment" name="Apartment" sequence="20" action="action_menu_apartment"/>
+				<menuitem id="menu_castle" name="Castle" sequence="30" action="action_menu_castle"/>
 			</menuitem>
 		</menuitem>
+		
 	</data>	
 </odoo>
