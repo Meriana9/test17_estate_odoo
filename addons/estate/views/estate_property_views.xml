@@ -6,6 +6,10 @@
 		<field name="model">estate.property</field>
 		<field name="arch" type="xml">
 			<form string="Estate Property">
+				<header>
+					<button name="action_cancel_property" string="Cancel" type="object"/>
+					<button name="action_set_as_sold" string="Sold" type="object"/>
+				</header>
 				<!-- les champs que vous souhaitez afficher dans le formulaire -->
 				<sheet>
 					<group>
