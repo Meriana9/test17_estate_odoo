@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 from datetime import datetime, timedelta
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools.float_utils import float_compare, float_is_zero
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
@@ -81,6 +82,20 @@ class EstateProperty(models.Model):
             raise UserError("A canceled property cannot be sold.")
         self.state = 'sold'
 
+# constraint
+    _sql_constraints = [
+        ('positive_expected_price', 'CHECK(expected_price > 0)', 'Expected price must be strictly positive.'),]
+
+    # se délanche à chaque fois y un changement de price
+    @api.constrains('expected_price', 'selling_price')
+    def _check_selling_price(self):
+        for record in self:
+            # Ignore when the selling price is zero (not set yet)
+            if not float_is_zero(record.selling_price, precision_digits=2):
+                continue
+            min_selling_price = 0.9 * record.expected_price
+            if float_compare(record.selling_price, min_selling_price, precision_digits=2) < 0:
+                raise ValidationError("Selling price cannot be lower than 90% of the expected price")
 
     property_type_id = fields.Many2one('estate.property.type', string='Property Type')
     buyer_id= fields.Many2one('res.partner', string="Buyer")
@@ -96,7 +111,7 @@ class EstateProperty(models.Model):
                 property_record.state = 'canceled' 
                 
                     
-                def action_cancel_property(self):
+    def action_cancel_property(self):
         if self.state == 'sold':
             raise UserError("A sold property cannot be canceled.")
         self.state = 'canceled'
