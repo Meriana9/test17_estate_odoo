@@ -1,35 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
-
-			<!-- Actions de vue -->
-			<record id="action_menu_house" model="ir.actions.act_window">
-				<field name="name">Houses</field>
-				<field name="res_model">estate.house</field> 
-				<field name="view_mode">tree,form</field> 
-			</record>
-
-			<!-- Actions de vue -->
-			<record id="action_menu_apartment" model="ir.actions.act_window">
-				<field name="name">apartments</field>
-				<field name="res_model">estate.apartment</field> 
-				<field name="view_mode">tree,form</field> 
-			</record>
-
-			<!-- Actions de vue -->
-			<record id="action_menu_castle" model="ir.actions.act_window">
-				<field name="name">Castles</field>
-				<field name="res_model">estate.castle</field> 
-				<field name="view_mode">tree,form</field> 
-			</record>
-
-
-		<menuitem id="menu_estates" name="Estates" sequence="20">
-			<menuitem id="menu_estate_property_tags" name="Property Tags" sequence="10"/>
-			<menuitem id="menu_estate_property_types" name="Property Types" sequence="20">
-				<menuitem id="menu_house" name="House" sequence="10" action="action_menu_house"/>
-				<menuitem id="menu_apartment" name="Apartment" sequence="20" action="action_menu_apartment"/>
-				<menuitem id="menu_castle" name="Castle" sequence="30" action="action_menu_castle"/>
+		<menuitem id="menu_estates" name="Estates" sequence="20" action="estate_model_action">
+			<menuitem id="menu_estate_settings" name="Settings" sequence="20">
+				<menuitem id="menu_estate_property_tags" name="Property Tags" sequence="20"/>
+				<menuitem id="menu_estate_property_types" name="Property Types" sequence="30">
+					<menuitem id="menu_house" name="House" sequence="10" action="action_menu_house"/>
+					<menuitem id="menu_apartment" name="Apartment" sequence="20" action="action_menu_apartment"/>
+					<menuitem id="menu_castle" name="Castle" sequence="30" action="action_menu_castle"/>
+				</menuitem>
 			</menuitem>
 		</menuitem>
 		
