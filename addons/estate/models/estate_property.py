@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from datetime import datetime, timedelta
+from odoo.exceptions import UserError
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
@@ -45,6 +46,7 @@ class EstateProperty(models.Model):
 
     """ méthod apappelée lorsqu'il y a un changement dans le champ "garden" """
     
+    
     @api.onchange('garden')
     def onchange_garden(self):
         if self.garden:
@@ -67,15 +69,17 @@ class EstateProperty(models.Model):
         ('canceled', 'Canceled')
     ], string='State', required=True, default='new', copy=False)
     
+            
     def action_cancel_property(self):
-        for property_record in self:
-            if property_record.state != 'sold':
-                property_record.state = 'canceled'
-
-    def action_set_as_sold(self):
-        for property_record in self:
-            if property_record.state != 'canceled':
-                property_record.state = 'sold'
+        if self.state == 'sold':
+            raise UserError("A sold property cannot be canceled.")
+        self.state = 'canceled'
+        
+    
+    def action_sell_property(self):
+        if self.state == 'canceled':
+            raise UserError("A canceled property cannot be sold.")
+        self.state = 'sold'
 
 
     property_type_id = fields.Many2one('estate.property.type', string='Property Type')
@@ -84,3 +88,16 @@ class EstateProperty(models.Model):
     property_tag_ids = fields.Many2many("estate.property.tag", string="Tags")
     property_offer_ids = fields.Many2many("estate.property.offer", 'property_id', string="offers")
     
+
+"""   
+    def action_cancel_property(self):
+        for property_record in self:
+            if property_record.state != 'sold':
+                property_record.state = 'canceled' 
+                
+                    
+                def action_cancel_property(self):
+        if self.state == 'sold':
+            raise UserError("A sold property cannot be canceled.")
+        self.state = 'canceled'
+                """

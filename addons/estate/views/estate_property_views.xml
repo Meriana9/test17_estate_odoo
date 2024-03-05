@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-	<!-- vue détail d'une estate -->
+	<!-- vue détail d'une estate formulaire -->
 	<record id="view_estate_property_form" model="ir.ui.view">
 		<field name="name">estate.property.form</field>
 		<field name="model">estate.property</field>
@@ -8,7 +8,7 @@
 			<form string="Estate Property">
 				<header>
 					<button name="action_cancel_property" string="Cancel" type="object"/>
-					<button name="action_set_as_sold" string="Sold" type="object"/>
+					<button name="action_sell_property" string="Sold" type="object"/>
 				</header>
 				<!-- les champs que vous souhaitez afficher dans le formulaire -->
 				<sheet>
@@ -59,10 +59,10 @@
 
 	<!-- vue tree -->
 	<record id="view_estate_property_tree" model="ir.ui.view">
-		<field name="name">Test liste</field>
+		<field name="name">Estates</field>
 		<field name="model">estate.property</field>
 		<field name="arch" type="xml">
-			<tree string="Tests">
+			<tree string="Estates">
 				<field name="name" />
 				<field name="last_seen" />
 				<field name="state" />

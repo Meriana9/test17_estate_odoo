@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Vue de formulaire pour le tag de propriété -->
+    <record id="view_estate_property_tag_form" model="ir.ui.view">
+        <field name="name">estate.property.tag.form</field>
+        <field name="model">estate.property.tag</field>
+        <field name="arch" tag="xml">
+            <form string="Real Estate Property Tag">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue de liste pour le tag de propriété -->
+    <record id="view_estate_property_tag_tree" model="ir.ui.view">
+        <field name="name">estate.property.tag.tree</field>
+        <field name="model">estate.property.tag</field>
+        <field name="arch" tag="xml">
+            <tree string="Real Estate Property Tags">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue de recherche pour le tag de propriété -->
+    <record id="view_estate_property_tag_search" model="ir.ui.view">
+        <field name="name">estate.property.tag.search</field>
+        <field name="model">estate.property.tag</field>
+        <field name="arch" tag="xml">
+            <search string="Search Real Estate Property Tags">
+                <field name="name" string="Name"/>
+            </search>
+        </field>
+    </record>
+</odoo>

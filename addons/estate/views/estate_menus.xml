@@ -24,7 +24,7 @@
 			</record>
 
 
-		<menuitem id="menu_settings" name="Settings" sequence="20">
+		<menuitem id="menu_estates" name="Estates" sequence="20">
 			<menuitem id="menu_estate_property_tags" name="Property Tags" sequence="10"/>
 			<menuitem id="menu_estate_property_types" name="Property Types" sequence="20">
 				<menuitem id="menu_house" name="House" sequence="10" action="action_menu_house"/>
