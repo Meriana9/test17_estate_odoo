@@ -6,6 +6,7 @@ from odoo.tools.float_utils import float_compare, float_is_zero
 class EstateProperty(models.Model):
     _name = 'estate.property'
     _description = 'Real Estate Property'
+    _order = "id desc"
 
 
     name = fields.Char(string='Name', required=True, default = 'My new house')
@@ -19,6 +20,14 @@ class EstateProperty(models.Model):
     garden_area = fields.Integer(string='Garden Area')
     total_area = fields.Integer(string="Total Area", compute='_compute_total_area')
     best_price = fields.Float(string='Best Price', compute='_compute_best_price', store=True)
+    
+    type_id = fields.Many2one("estate.property.type", string="Property Type")
+    property_type_id = fields.Many2one('estate.property.type', string='Property Type')
+    buyer_id= fields.Many2one('res.partner', string="Buyer")
+    salesperson_id= fields.Many2one('res.users', string="Salesperson", default=lambda self: self.env.user)
+    property_tag_ids = fields.Many2many("estate.property.tag", string="Tags")
+    property_offer_ids = fields.Many2many("estate.property.offer", 'property_id', string="offers")
+    
 
     """ champ total area """
     @api.depends('living_area', 'garden_area')
@@ -52,10 +61,13 @@ class EstateProperty(models.Model):
     def onchange_garden(self):
         if self.garden:
             self.garden_area = 10
-            self.garden_orientation= 'north'
+            self.garden_orientation = 'north'
+            self.total_area = self.living_area + self.garden_area
         else:
             self.garden_area = 0
-            self.garden_orientation=  False
+            self.garden_orientation = False
+            self.total_area = self.living_area
+
         
 
     last_seen = fields.Datetime("Last Seen", default=fields.Datetime.now)
@@ -96,13 +108,7 @@ class EstateProperty(models.Model):
             min_selling_price = 0.9 * record.expected_price
             if float_compare(record.selling_price, min_selling_price, precision_digits=2) < 0:
                 raise ValidationError("Selling price cannot be lower than 90% of the expected price")
-
-    property_type_id = fields.Many2one('estate.property.type', string='Property Type')
-    buyer_id= fields.Many2one('res.partner', string="Buyer")
-    salesperson_id= fields.Many2one('res.users', string="Salesperson", default=lambda self: self.env.user)
-    property_tag_ids = fields.Many2many("estate.property.tag", string="Tags")
-    property_offer_ids = fields.Many2many("estate.property.offer", 'property_id', string="offers")
-    
+  
 
 """   
     def action_cancel_property(self):

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Vue de formulaire pour le type de propriété -->
+    <!-- Vue de formulaire pour le type de propriété  form -->
     <record id="view_estate_property_type_form" model="ir.ui.view">
         <field name="name">estate.property.type.form</field>
         <field name="model">estate.property.type</field>
@@ -9,18 +9,26 @@
                 <sheet>
                     <group>
                         <field name="name"/>
+                        <field name="property_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="expected_price"/>
+                                <field name="state"/>
+                            </tree>
+                        </field>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Vue de liste pour le type de propriété -->
+    <!-- Vue de liste pour le type de propriété tree -->
     <record id="view_estate_property_type_tree" model="ir.ui.view">
         <field name="name">estate.property.type.tree</field>
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
             <tree string="Real Estate Property Types">
+                <field name="sequence" widget="handle"/>
                 <field name="name"/>
             </tree>
         </field>
