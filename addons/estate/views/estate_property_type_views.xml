@@ -45,26 +45,9 @@
         </field>
     </record>
 
-
-    
-			<!-- Actions de vue -->
-			<record id="action_menu_house" model="ir.actions.act_window">
-				<field name="name">Houses</field>
-				<field name="res_model">estate.house</field> 
-				<field name="view_mode">tree,form</field> 
-			</record>
-
-			<!-- Actions de vue -->
-			<record id="action_menu_apartment" model="ir.actions.act_window">
-				<field name="name">apartments</field>
-				<field name="res_model">estate.apartment</field> 
-				<field name="view_mode">tree,form</field> 
-			</record>
-
-			<!-- Actions de vue -->
-			<record id="action_menu_castle" model="ir.actions.act_window">
-				<field name="name">Castles</field>
-				<field name="res_model">estate.castle</field> 
-				<field name="view_mode">tree,form</field> 
-			</record>
+    <record id="estate_model_action_type" model="ir.actions.act_window">
+		<field name="name">Property Types</field>
+		<field name="res_model">estate.property.type</field>
+		<field name="view_mode">tree,form</field>
+	</record>
 </odoo>

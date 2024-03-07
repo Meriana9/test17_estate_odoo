@@ -1,47 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Vue de formulaire pour le tag de propriété -->
-    <record id="view_estate_property_tag_form" model="ir.ui.view">
-        <field name="name">estate.property.tag.form</field>
-        <field name="model">estate.property.tag</field>
-        <field name="arch" tag="xml">
-            <form string="Real Estate Property Tag">
-                <sheet>
-                    <group>
+    <data>
+            <record id="view_estate_property_tag_form" model="ir.ui.view">
+                <field name="name">estate.property.tag.form</field>
+                <field name="model">estate.property.tag</field>
+                <field name="arch" type="xml">
+                    <form string="Real Estate Property Tag">
+                        <sheet>
+                            <group>
+                                <field name="name"/>
+                                <field name="color"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+        
+            <record id="view_estate_property_tag_tree" model="ir.ui.view">
+                <field name="name">estate.property.tag.tree</field>
+                <field name="model">estate.property.tag</field>
+                <field name="arch" type="xml">
+                    <tree string="Real Estate Property Tags">
                         <field name="name"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
+                        <field name="color"/>
+                    </tree>
+                </field>
+            </record>
+        
+            <record id="view_estate_property_tag_search" model="ir.ui.view">
+                <field name="name">estate.property.tag.search</field>
+                <field name="model">estate.property.tag</field>
+                <field name="arch" type="xml">
+                    <search string="Search Real Estate Property Tags">
+                        <field name="name" string="Name"/>
+                    </search>
+                </field>
+            </record>
 
-    <!-- Vue de liste pour le tag de propriété -->
-    <record id="view_estate_property_tag_tree" model="ir.ui.view">
-        <field name="name">estate.property.tag.tree</field>
-        <field name="model">estate.property.tag</field>
-        <field name="arch" tag="xml">
-            <tree string="Real Estate Property Tags">
-                <field name="name"/>
-            </tree>
-        </field>
-    </record>
+        
 
-    <!-- Vue de recherche pour le tag de propriété -->
-    <record id="view_estate_property_tag_search" model="ir.ui.view">
-        <field name="name">estate.property.tag.search</field>
-        <field name="model">estate.property.tag</field>
-        <field name="arch" tag="xml">
-            <search string="Search Real Estate Property Tags">
-                <field name="name" string="Name"/>
-            </search>
-        </field>
-    </record>
 
-    <!-- vue menu action de créer des tags -->
-	<record id="estate_property_tag_model_action" model="ir.actions.act_window">
-		<field name="name">My new house</field>
-		<field name="res_model">estate.property</field>
+        <record id="estate_property_tag_cozy" model="estate.property.tag">
+            <field name="name">Cozy</field>
+            <field name="color">16737894</field>
+        </record>
+        
+        <record id="estate_property_tag_renovated" model="estate.property.tag">
+            <field name="name">Renovated</field>
+            <field name="color">654321</field>
+        </record>
+
+	<record id="estate_model_action_tag" model="ir.actions.act_window">
+		<field name="name">Property Tags</field>
+		<field name="res_model">estate.property.tag</field>
 		<field name="view_mode">tree,form</field>
-		<field name="context">{'search_default_max_results': 50}</field>
+
 	</record>
+    </data>
 </odoo>

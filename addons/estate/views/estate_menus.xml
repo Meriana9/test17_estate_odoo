@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 	<data>
-		<menuitem id="menu_estates" name="Estates" sequence="20" action="estate_model_action">
-			<menuitem id="menu_estate_settings" name="Settings" sequence="20">
-				<menuitem id="menu_estate_property_tags" name="Property Tags" sequence="20"/>
-				<menuitem id="menu_estate_property_types" name="Property Types" sequence="30">
-					<menuitem id="menu_house" name="House" sequence="10" action="action_menu_house"/>
-					<menuitem id="menu_apartment" name="Apartment" sequence="20" action="action_menu_apartment"/>
-					<menuitem id="menu_castle" name="Castle" sequence="30" action="action_menu_castle"/>
-				</menuitem>
+		<menuitem id="menu_estates" name="Estates" action="estate_model_action">
+			<menuitem id="menu_estate_advertisements" name="Advertisements">
+				<menuitem id="estate_property" name="Properties" action="estate_model_action" />
+			</menuitem>
+			<menuitem id="menu_estate_settings" name="Settings">
+				<menuitem id="menu_estate_property_types" name="Property Types" action="estate_model_action_type" />
+				<menuitem id="menu_estate_property_tags" name="Property Tags" action="estate_model_action_tag" />
 			</menuitem>
 		</menuitem>
 		
